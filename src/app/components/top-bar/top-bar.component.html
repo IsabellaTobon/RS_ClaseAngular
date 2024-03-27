@@ -1,0 +1,30 @@
+<!-- <p>top-bar works!</p> -->
+<div class="top">
+  <div>
+    <p class="nombreRedSocial">Angularu</p>
+  </div>
+  <div>
+    <p>
+      <input type="search" placeholder="busqueda...">
+    </p>
+  </div>
+  <!-- <div class="inline1">
+    <p>
+      <input class="botonR" type="button" [value]="textoDeBotonRegistro" (click)="registrarse()">
+    </p>
+  </div> -->
+  <div class="botones1">
+    <p>
+      <input type="button" [value]="textoDeBotonRegistro" (click)="registrarse()">
+      <input type="button" [value]="textoDeBoton" (click)="cambiarFormulario()">
+    </p>
+  </div>
+</div>
+
+@if (formularioRegistroAbierto) {
+  <registro-nuevo-usuario></registro-nuevo-usuario>
+}
+@if (formularioabierto) {
+  <login></login>
+}
+

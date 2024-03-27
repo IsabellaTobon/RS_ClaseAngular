@@ -1,0 +1,25 @@
+.top {
+  height: 50px;
+  background-color: rgb(92, 92, 92);
+
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.nombreRedSocial {
+  margin-left: 25px;
+  color: rgb(173, 248, 248);
+  font-weight: bold;
+  font-size: larger;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.botones1{
+  cursor: pointer;
+  margin-inline-end: 45px;
+
+}
+
+
