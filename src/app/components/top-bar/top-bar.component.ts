@@ -17,6 +17,7 @@ export class TopBarComponent {
 
   registrarse() {
     this.formularioRegistroAbierto = !this.formularioRegistroAbierto
+    this.formularioabierto = false;
   }
 
 
@@ -24,6 +25,7 @@ export class TopBarComponent {
 
   cambiarFormulario() {
     this.formularioabierto = !this.formularioabierto
+    this.formularioRegistroAbierto = false;
   }
 
 }
