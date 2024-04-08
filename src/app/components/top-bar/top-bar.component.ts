@@ -22,9 +22,14 @@ export class TopBarComponent {
 
   formularioabierto:boolean = false
 
-  cambiarFormulario() {
+  cambiarFormulario(seHaLogueado:boolean = false) {
+    this.textoDeBoton = "Iniciar Sesión"
+
     this.formularioabierto = !this.formularioabierto
-    this.formularioRegistroAbierto = false;
+    // Con esto haré que mi botón de iniciar sesión cambie a poner Cerrar Sesión
+    if (seHaLogueado) {
+      this.textoDeBoton = "Cerrar Sesión"
+    }
   }
 
 }
