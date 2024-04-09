@@ -49,3 +49,20 @@ form > input {
   font-size: medium;
   color: rgb(35, 3, 94);
 }
+
+
+.iconoCerrar button {
+  margin-top:0 ;
+  margin-bottom: 5%;
+  margin-left: 89%;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 50%;
+  background-color: aliceblue;
+  font-size: large;
+}
+
+.iconoCerrar :hover {
+  background-color: grey;
+  color: bisque;
+}

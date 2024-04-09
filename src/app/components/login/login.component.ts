@@ -19,6 +19,7 @@ export class LoginComponent {
 
   showingRegisterForm: Boolean = false
 
+
   @Output() usuarioLogueado: EventEmitter<void> = new EventEmitter<void>();
   // @Output() usuarioRegistrado: EventEmitter<void> = new EventEmitter<void>();
 
@@ -71,5 +72,10 @@ export class LoginComponent {
   toggleForm() {
     // Esto hace que este dando vueltas a la variable en cada uso
     this.showingRegisterForm = !this.showingRegisterForm
+  }
+
+  cerrarForm() {
+    //Ocultar formulario
+    this.showingRegisterForm = false
   }
 }

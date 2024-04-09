@@ -4,6 +4,9 @@
     <!-- Los "ngModel" linkea un atributo de un objeto de nuestro TypeScript con los cambios que se hagan en ese objeto -->
     <!-- Y lo ponemos con [] y con () para hacer una conexion bidireccional-->
     <form (submit)="login()" #formulario="ngForm">
+      <div class="iconoCerrar">
+        <button type="button" (click)="cerrarForm()">X</button>
+      </div>
       <input type="text" placeholder="Usuario" [(ngModel)]="usuario.usuario" name="userName">
         <div>
           <input type="password" placeholder="Contraseña" [(ngModel)]="usuario.contrasena" name="password">
@@ -16,6 +19,9 @@
   }@else {
     <!-- Formulario de Registro -->
     <form (submit)="registro()" #formulario2="ngForm">
+      <div class="iconoCerrar">
+        <button type="button" (click)="cerrarForm()">X</button>
+      </div>
       <div>
         <input type="text" placeholder="Usuario" required name="usuario" [(ngModel)] = "registerData.username">
       </div>
