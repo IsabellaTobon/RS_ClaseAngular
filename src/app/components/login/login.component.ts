@@ -71,11 +71,12 @@ export class LoginComponent {
 
   toggleForm() {
     // Esto hace que este dando vueltas a la variable en cada uso
-    this.showingRegisterForm = !this.showingRegisterForm
+    this.showingRegisterForm = true
   }
 
-  cerrarForm() {
+  cerrarFormInicio() {
     //Ocultar formulario
     this.showingRegisterForm = false
   }
+
 }
