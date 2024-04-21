@@ -1,7 +1,7 @@
 <!-- <p>top-bar works!</p> -->
 <div class="top">
   <div>
-    <p class="nombreRedSocial">Angularu</p>
+    <p class="nombreRedSocial" router-link="">Angularu</p>
   </div>
   <div>
     <p>
@@ -12,10 +12,11 @@
     <p>
       <input type="button" [value]="textoDeBoton" (click)="cambiarFormulario()">
     </p>
-  </div>
+</div>
 </div>
 
 @if (formularioabierto) {
-  <login (usuarioLogueado)="cambiarFormulario(true)"></login>
+  <login (usuarioLogueado)="cambiarFormulario(true)" (cerrarFormulario)="cambiarFormulario()"></login>
+
 }
 

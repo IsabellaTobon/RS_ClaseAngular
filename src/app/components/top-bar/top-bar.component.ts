@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { LoginComponent } from "../login/login.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'topbar',
     standalone: true,
     templateUrl: './top-bar.component.html',
     styleUrl: './top-bar.component.css',
-    imports: [LoginComponent]
+    imports: [LoginComponent,RouterLink]
 })
 export class TopBarComponent {
   textoDeBotonRegistro:string = "Registrarse"

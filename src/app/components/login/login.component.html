@@ -1,45 +1,69 @@
 <div class="divFondo">
   @if (!showingRegisterForm) {
-    <!-- Formulario de Login -->
-    <!-- Los "ngModel" linkea un atributo de un objeto de nuestro TypeScript con los cambios que se hagan en ese objeto -->
-    <!-- Y lo ponemos con [] y con () para hacer una conexion bidireccional-->
-    <form (submit)="login()" #formulario="ngForm">
-      <div class="iconoCerrar">
-        <button type="button" (click)="cerrarFormInicio()">X</button>
-      </div>
-      <input type="text" placeholder="Usuario" [(ngModel)]="usuario.usuario" name="userName">
-        <div>
-          <input type="password" placeholder="Contraseña" [(ngModel)]="usuario.contrasena" name="password">
-        </div>
-        <button>Iniciar sesión</button>
-
-        <p class="registerText" (click)="toggleForm()">¿No tienes cuenta?, Regristrate aquí.</p>
-    </form>
+  <!-- Formulario de Login -->
+  <form (submit)="login()" [formGroup]="formularioLogin">
+    <div class="iconoCerrar" (click)="cerrarForm()">
+      <span class="material-symbols-rounded">
+        close
+      </span>
+    </div>
+    <div>
+      <input type="text" placeholder="Usuario" formControlName="usuario" />
+    </div>
+    <div>
+      <input
+        type="password"
+        placeholder="Contraseña"
+        formControlName="contraseña"
+      />
+    </div>
+    <button [disabled]="formularioLogin.invalid">Iniciar sesión</button>
+    <p class="registerText" (click)="toggleForm()">
+      ¿No tienes cuenta?, Regristrate aquí.
+    </p>
+  </form>
 
   }@else {
-    <!-- Formulario de Registro -->
-    <form (submit)="registro()" #formulario2="ngForm">
-      <div class="iconoCerrar">
-        <button type="button" (click)="cerrarFormRegistro()">X</button>
-      </div>
-      <div>
-        <input type="text" placeholder="Usuario" required name="usuario" [(ngModel)] = "registerData.username">
-      </div>
-      <div>
-        <input type="email"  required placeholder="Email">
-      </div>
-      <div>
-        <input type="password" minlength="8" placeholder="Contraseña" required  name="password" [(ngModel)] = "registerData.password">
-      </div>
-      <div>
-        <input type="password" minlength="8" placeholder="Confirmar Contraseña" required  name="confirmPassword" [(ngModel)] = "registerData.confirmPassword">
-      </div>
-      <div>
-        <input type="text"  required placeholder="Teléfono">
-      </div>
-        <button type="reset">Limpiar casillas</button>
-        <button type="submit">Registarse</button>
-        <p class="registerText" (click)="toggleForm()">¿Ya tienes una cuenta?, Inicia sesión.</p>
-    </form>
+  <!-- Formulario de Registro -->
+  <form (submit)="registro()" [formGroup]="formularioRegistro">
+    <div class="iconoCerrar" (click)="cerrarForm()">
+      <span class="material-symbols-rounded">
+        close
+      </span>
+    </div>
+    <div>
+      <input type="text" placeholder="Usuario" formControlName="usuario" />
+    </div>
+    <div>
+      <input type="email" placeholder="Email" formControlName="email" />
+    </div>
+    <div>
+      <input
+        type="password"
+        placeholder="Contraseña"
+        formControlName="contraseña"
+      />
+    </div>
+    <div>
+      <input
+        type="password"
+        placeholder="Confirmar Contraseña"
+        formControlName="confirmarContraseña"
+      />
+    </div>
+    <div>
+      <input
+        type="text"
+        required
+        placeholder="Teléfono"
+        formControlName="telefono"
+      />
+    </div>
+    <button type="reset">Limpiar casillas</button>
+    <button [disabled]="formularioRegistro.invalid">Registarse</button>
+    <p class="registerText" (click)="toggleForm()">
+      ¿Ya tienes una cuenta?, Inicia sesión.
+    </p>
+  </form>
   }
 </div>
