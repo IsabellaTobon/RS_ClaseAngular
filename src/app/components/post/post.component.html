@@ -1,1 +1,33 @@
-<p>post works!</p>
+<div>
+  @if (!showingPostForm) {
+  <div class="botonSubirPost">
+    <button (click)="mostrarSubirPost()">
+      <span class="material-symbols-rounded btn-upload-img"> add_photo_alternate </span>
+    </button>
+  </div>
+  }
+  @else {
+  <div class="divFondo">
+    <form (submit)="subirPost()" [formGroup]="formularioPost">
+      <div class="iconoCerrar" (click)="cerrarForm()">
+        <span class="material-symbols-rounded"> close </span>
+      </div>
+      <div>
+        <input
+          type="text"
+          placeholder="Título del post"
+          formControlName="titulo"
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          placeholder="Url de la imagen"
+          formControlName="urlImagen"
+        />
+      </div>
+      <button [disabled]="formularioPost.invalid">Subir Imagen</button>
+    </form>
+  </div>
+  }
+</div>

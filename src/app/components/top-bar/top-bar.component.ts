@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { LoginComponent } from "../login/login.component";
 import { RouterLink } from '@angular/router';
+import { PostComponent } from '../post/post.component';
 
 @Component({
-    selector: 'topbar',
-    standalone: true,
-    templateUrl: './top-bar.component.html',
-    styleUrl: './top-bar.component.css',
-    imports: [LoginComponent,RouterLink]
+  selector: 'topbar',
+  standalone: true,
+  templateUrl: './top-bar.component.html',
+  styleUrl: './top-bar.component.css',
+  imports: [LoginComponent, PostComponent, RouterLink]
 })
+
 export class TopBarComponent {
   textoDeBotonRegistro:string = "Registrarse"
   textoDeBoton:string = "Iniciar sesión"
@@ -32,5 +34,7 @@ export class TopBarComponent {
       this.textoDeBoton = "Cerrar Sesión"
     }
   }
+
+  FormularioPostAbierto : boolean = true
 
 }

@@ -1,0 +1,58 @@
+.divFondo {
+  position: absolute;
+  background-color: rgba(240, 248, 255, 0.336);
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+form {
+  width: 250px;
+  height: fit-content;
+  padding: 25px;
+  background-color: azure;
+  border: 2px black solid;
+  border-radius: 30px;
+  justify-content: center;
+
+}
+
+form input, form button {
+  width: 100%;
+  margin-top: 20px;
+}
+
+form > input {
+  margin-top: 0;
+}
+
+.botonSubirPost {
+width: 100%;
+height: 100%;
+}
+
+.botonSubirPost button{
+
+  margin-top: 850px;
+  margin-left: 850px;
+  cursor: pointer;
+}
+
+.iconoCerrar {
+  display: flex;
+  justify-content: end;
+  cursor: pointer;
+  }
+
+.iconoCerrar :hover {
+  background-color: grey;
+}
+
+.botonSubirPost > button {
+  display: block !important;
+  float: right;
+}
+

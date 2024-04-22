@@ -59,7 +59,14 @@ export class LoginComponent implements OnInit {
           Validators.maxLength(11),
         ],
       ],
-      email: ['', [Validators.required, Validators.email]],
+
+      email: ['',
+        [
+          Validators.required,
+          Validators.email
+        ]
+      ],
+
       contraseña: ['',
         [
           Validators.required,
@@ -67,6 +74,7 @@ export class LoginComponent implements OnInit {
           Validators.maxLength(14),
         ],
       ],
+
       confirmarContraseña: ['',
         [
           Validators.required,
@@ -74,6 +82,7 @@ export class LoginComponent implements OnInit {
           Validators.maxLength(14),
         ],
       ],
+
       telefono: ['',
         [
           Validators.required,
@@ -158,4 +167,6 @@ export class LoginComponent implements OnInit {
     // Lo llamamos desde el padre que es top-bar
     this.cerrarFormulario.emit();
   }
+
+
 }
