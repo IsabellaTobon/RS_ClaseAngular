@@ -29,17 +29,29 @@ form > input {
   margin-top: 0;
 }
 
+/* .grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  row-gap: 50px;
+  margin-top: 50px;
+} */
+
 .botonSubirPost {
-width: 100%;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 2px black solid;
+  position: fixed;
+  bottom: 5px;
+  right: 15px;
+
+/* width: 100%;
 height: 100%;
+margin-top: 850px;
+margin-left: 850px;
+cursor: pointer; */
 }
 
-.botonSubirPost button{
-
-  margin-top: 850px;
-  margin-left: 850px;
-  cursor: pointer;
-}
 
 .iconoCerrar {
   display: flex;

@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { LoginDatos } from '../../interfaces/login-datos';
 import {
   FormBuilder,
   FormControl,
@@ -8,8 +7,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RegistroData } from '../../interfaces/registro-data';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'login',
@@ -30,7 +29,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private servicio: UserService
   ) {}
 
   ngOnInit(): void {
@@ -59,6 +59,22 @@ export class LoginComponent implements OnInit {
           Validators.maxLength(11),
         ],
       ],
+
+      nombre: ['',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(11),
+        ],
+      ],
+
+      apellido: ['',
+      [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(11),
+      ],
+    ],
 
       email: ['',
         [
@@ -101,8 +117,11 @@ export class LoginComponent implements OnInit {
 
   formularioRegistro: FormGroup = new FormGroup({
     usuario: new FormControl(''),
+    nombre: new FormControl(''),
+    apellido: new FormControl(''),
     contraseña: new FormControl(''),
     confirmarContraseña: new FormControl(''),
+    telefono: new FormControl(''),
   });
 
   // Al crear el formulario en el ts esto queda obsoleto
@@ -118,31 +137,41 @@ export class LoginComponent implements OnInit {
   // }
 
   login() {
-    const nombreUsuario = this.formularioLogin.get('usuario')?.value;
-    const contraseña = this.formularioLogin.get('contraseña')?.value;
 
-    if (nombreUsuario == 'admin' && contraseña == 'admin') {
+    let loginCorrecto = this.servicio.login(
+      this.formularioLogin.get('usuario')?.value,
+      this.formularioLogin.get('contraseña')?.value
+    );
+
+    if(loginCorrecto) {
       this.usuarioLogueado.emit();
 
-      this.router.navigate(['/posts']);
+      this.router.navigate(["/posts"])
     }
 
-    // Primero obtenemos la referencia con el get y lo actualizamos con el set
-    this.formularioLogin.get('usuario')?.setValue('');
-    this.formularioLogin.get('contraseña')?.setValue('');
+        // Primero obtenemos la referencia con el get y lo actualizamos con el set
+        this.formularioLogin.get('usuario')?.setValue('');
+        this.formularioLogin.get('contraseña')?.setValue('');
+
   }
   registro() {
     const nombreUsuario = this.formularioLogin.get('usuario')?.value;
+    const nombre = this.formularioLogin.get('nombre')?.value;
+    const apellido = this.formularioLogin.get('apellido')?.value;
     const email = this.formularioLogin.get('email')?.value;
     const contraseña = this.formularioLogin.get('contraseña')?.value;
     const confirmarContraseña = this.formularioLogin.get('confirmarContraseña')?.value;
     const telefono = this.formularioLogin.get('telefono')?.value;
 
-    if (contraseña != confirmarContraseña) {
-      alert('Las contraseñas no coinciden');
+    const registroConExito = this.servicio.register(nombreUsuario, contraseña, confirmarContraseña)
+
+    if (!registroConExito) {
+      alert('Las contraseñas no coinciden o ya existe el usuario');
     } else {
       // Primero obtenemos la referencia con el get y lo actualizamos con el set
       this.formularioLogin.get('usuario')?.setValue(nombreUsuario);
+      this.formularioLogin.get('nombre')?.setValue(nombre);
+      this.formularioLogin.get('apellido')?.setValue(apellido);
       this.formularioRegistro.get('email')?.setValue(email);
       this.formularioLogin.get('contraseña')?.setValue(contraseña);
       this.formularioRegistro.get('telefono')?.setValue(telefono);

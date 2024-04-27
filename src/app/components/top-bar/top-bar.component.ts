@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoginComponent } from "../login/login.component";
 import { RouterLink } from '@angular/router';
 import { PostComponent } from '../post/post.component';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'topbar',
@@ -12,6 +13,11 @@ import { PostComponent } from '../post/post.component';
 })
 
 export class TopBarComponent {
+
+constructor (
+  private service: UserService
+){}
+
   textoDeBotonRegistro:string = "Registrarse"
   textoDeBoton:string = "Iniciar sesión"
 
@@ -29,9 +35,11 @@ export class TopBarComponent {
     this.textoDeBoton = "Iniciar Sesión"
 
     this.formularioabierto = !this.formularioabierto
-    // Con esto haré que mi botón de iniciar sesión cambie a poner Cerrar Sesión
+
+    // Con esto haré que mi botón de iniciar sesión cambie a
+    // poner Cerrar Sesión y que ponga el nombre del suario logueado
     if (seHaLogueado) {
-      this.textoDeBoton = "Cerrar Sesión"
+      this.textoDeBoton = "Cerrar Sesión " + this.service.userData.username
     }
   }
 

@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-post',
@@ -24,10 +25,19 @@ export class PostComponent implements OnInit {
 
   constructor (
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    // private service: PostService
   ) {}
 
+  // posts: Array<Post> = []
+
   ngOnInit(): void {
+
+      // this.service.inicio()
+
+      // this.posts = this.service.posts
+
+
     this.formularioPost = this.formBuilder.group({
       titulo: ['',
         [
