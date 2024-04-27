@@ -1,4 +1,65 @@
 <div>
+
+  <p class="botonSubirPost" (click)="mostrarSubirPost()">
+    <button (click)="mostrarSubirPost()">
+      <span class="material-symbols-rounded btn-upload-img"> add_photo_alternate </span>
+    </button>
+  </p>
+
+  @if (showingPostForm) {
+    <div class="divFondo">
+      <form (submit)="subirPost()" [formGroup]="formularioPost">
+        <div class="iconoCerrar" (click)="cerrarForm()">
+          <span class="material-symbols-rounded"> close </span>
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="Título del post"
+            formControlName="titulo"
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="Url de la imagen"
+            formControlName="urlImagen"
+          />
+        </div>
+        <button [disabled]="formularioPost.invalid">Subir Imagen</button>
+      </form>
+    </div>
+    <!-- **ESTE FUNCIONA PERO EL CSS FALTA ARREGLAR** -->
+    <!-- <div class="fondo">
+      <div class="iconoCerrar" (click)="cerrarForm()">
+        <span class="material-symbols-rounded">
+          close
+        </span>
+        <form (submit)="subirPost()" [formGroup]="formularioPost">
+          <div class="iconoCerrar" (click)="cerrarForm()">
+            <span class="material-symbols-rounded"> close </span>
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="Título del post"
+              formControlName="titulo"
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="Url de la imagen"
+              formControlName="urlImagen"
+            />
+          </div>
+          <button [disabled]="formularioPost.invalid">Subir Imagen</button>
+        </form>
+
+      </div>
+
+    </div> -->
+  }
   <!-- <div class="grid">
         @for (post of posts; track $index) {
             <div class="post">
@@ -6,7 +67,7 @@
             </div>
         }
     </div> -->
-  @if (!showingPostForm) {
+  <!-- @if (!showingPostForm) {
   <div class="botonSubirPost">
     <button (click)="mostrarSubirPost()">
       <span class="material-symbols-rounded btn-upload-img"> add_photo_alternate </span>
@@ -36,5 +97,5 @@
       <button [disabled]="formularioPost.invalid">Subir Imagen</button>
     </form>
   </div>
-  }
+  } -->
 </div>

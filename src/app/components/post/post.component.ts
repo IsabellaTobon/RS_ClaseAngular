@@ -60,7 +60,7 @@ export class PostComponent implements OnInit {
   });
 
   mostrarSubirPost() {
-    this.showingPostForm = !this.showingPostForm;
+    this.showingPostForm = true
   }
 
   subirPost() {
@@ -69,7 +69,6 @@ export class PostComponent implements OnInit {
   }
 
   cerrarForm() {
-    // Lo llamamos desde el padre que es top-bar
-    this.cerrarFormulario.emit();
+    this.showingPostForm = false
   }
 }
